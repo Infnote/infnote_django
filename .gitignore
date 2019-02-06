@@ -2,4 +2,6 @@
 .venv
 *.lock
 __pycache__
-data
+*.log
+*.pid
+db
