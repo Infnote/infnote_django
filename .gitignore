@@ -1,0 +1,5 @@
+.idea
+.venv
+*.lock
+__pycache__
+data

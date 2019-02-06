@@ -1,0 +1,28 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+djangorestframework = "*"
+django-filter = "*"
+djangorestframework-jwt = "*"
+django-crontab = "*"
+django-cors-headers = "*"
+requests = "*"
+uwsgi = "*"
+base58 = "*"
+terminaltables = "*"
+django-extensions = "*"
+googleapis-common-protos = "*"
+grpcio = "*"
+"secp256k1" = "*"
+mysqlclient = "*"
+grpcio-tools = "*"
+
+[dev-packages]
+pylint = "*"
+
+[requires]
+python_version = "3.6"
