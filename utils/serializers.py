@@ -1,15 +1,6 @@
-import bson
 from datetime import datetime
 
 from rest_framework import serializers
-
-
-class ObjectIdField(serializers.CharField):
-    def to_representation(self, value):
-        return str(value)
-
-    def to_internal_value(self, data):
-        return bson.ObjectId(data)
 
 
 class TimestampField(serializers.DateTimeField):
