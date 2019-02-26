@@ -24,6 +24,7 @@ class LastReplyField(serializers.RelatedField):
 
 class PostSerializer(serializers.ModelSerializer):
     id = serializers.CharField(source='payload_id', read_only=True)
+    title = serializers.CharField(required=False, allow_null=True, allow_blank=False)
     reply_to = serializers.CharField(required=False, allow_null=True, allow_blank=False)
     last_reply = LastReplyField(read_only=True)
     user = UserField(read_only=True, source='user_id')
