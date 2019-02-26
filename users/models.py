@@ -20,7 +20,7 @@ class User(models.Model):
 
     # User content
     user_id = models.CharField(max_length=100, primary_key=True)
-    nickname = models.CharField(max_length=100, unique=True)
+    nickname = models.CharField(max_length=15, unique=True)
     email = models.CharField(max_length=100, unique=True, null=False, blank=False)
     avatar = models.CharField(max_length=255, null=True)
     bio = models.CharField(max_length=255, null=True)

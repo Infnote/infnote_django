@@ -37,10 +37,10 @@ class PostSerializer(serializers.ModelSerializer):
         extra_kwargs = {'user_id': {'write_only': True}}
 
     def validate(self, attrs):
-        reply_to = attrs.get('reply_to')
-        title = attrs.get('title')
-        if (not reply_to or len(reply_to) == 0) and (not title or len(title) == 0):
-            raise serializers.ValidationError({'title': ['This field may not be blank when reply_to is blank.']})
+        # reply_to = attrs.get('reply_to')
+        # title = attrs.get('title')
+        # if (not reply_to or len(reply_to) == 0) and (not title or len(title) == 0):
+        #     raise serializers.ValidationError({'title': ['This field may not be blank when reply_to is blank.']})
 
         data = dict(self.initial_data)
         signature = data.pop('signature')
