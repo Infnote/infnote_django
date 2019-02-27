@@ -1,6 +1,8 @@
 import json
 import re
 
+from django.core.exceptions import ObjectDoesNotExist
+
 from rest_framework import serializers
 from .models import User
 
@@ -59,4 +61,13 @@ class UserField(serializers.RelatedField):
         pass
 
     def to_representation(self, value):
-        return UserBriefSerializer(instance=User.objects.get(user_id=value)).data
+        try:
+            user = User.objects.get(user_id=value)
+            return UserBriefSerializer(instance=user).data
+        except ObjectDoesNotExist:
+            return {
+                'user_id': value,
+                'nickname': 'Anonymous',
+                'avatar': None,
+                'bio': '',
+            }

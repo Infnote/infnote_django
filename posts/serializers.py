@@ -49,13 +49,9 @@ class PostSerializer(serializers.ModelSerializer):
         payload_id = data.pop('id', None)
         data.pop('block_height', None)
         data.pop('block_time', None)
-        try:
-            user = User.objects.get(user_id=user_id)
-        except ObjectDoesNotExist:
-            raise serializers.ValidationError({'user_id': ['user is not exist']})
 
         json_data = json.JSONEncoder(separators=(',', ':'), sort_keys=True, ensure_ascii=False).encode(data)
-        if not user or user.user_id != recover_user_id(json_data, signature):
+        if user_id != recover_user_id(json_data, signature):
             raise serializers.ValidationError({'signature': ['invalid signature']})
 
         if not payload_id:

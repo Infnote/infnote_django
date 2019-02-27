@@ -10,13 +10,14 @@ class PostManager(models.Manager):
         try:
             user = User.objects.get(user_id=kwargs.get('user_id'))
         except ObjectDoesNotExist:
-            raise ValueError('User is not exist.')
+            user = None
 
         post.save()
 
         if not post.reply_to:
-            user.topics += 1
-            user.save()
+            if user is not None:
+                user.topics += 1
+                user.save()
         else:
             try:
                 topic = self.get(payload_id=post.reply_to)

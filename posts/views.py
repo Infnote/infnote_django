@@ -15,12 +15,9 @@ class CreatePost(APIView):
     def post(request):
         serializer = PostSerializer(data=request.data)
         if serializer.is_valid():
-            user = User.objects.get(user_id=serializer.validated_data.get('user_id'))
-            if user is not None:
-                if RPCClient().create_post(serializer.validated_data):
-                    serializer.save()
-                    return Response(serializer.validated_data)
-            return Response({'user': 'The user id is not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+            if RPCClient().create_post(serializer.validated_data):
+                serializer.save()
+                return Response(serializer.validated_data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
