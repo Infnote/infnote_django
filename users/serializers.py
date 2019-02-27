@@ -22,6 +22,9 @@ class UserSerializer(serializers.ModelSerializer):
         #     raise serializers.ValidationError(
         #         'Users only who have a PKU mail address are allow to register at this moment.'
         #     )
+        nickname = attrs.get('nickname')
+        if re.match('anonymous', nickname, re.IGNORECASE):
+            raise serializers.ValidationError({'nickname': ['nickname should not include "anonymous"']})
 
         data = dict(attrs)
         user_id = data.pop('user_id')

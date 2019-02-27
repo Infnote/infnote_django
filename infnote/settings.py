@@ -30,14 +30,11 @@ ALLOWED_HOSTS = [
     'infnote.com',
     'api.infnote.com',
     'io.infnote.com',
-    '127.0.0.1',
-    '10.89.58.116'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'localhost:3000',
-    'localhost:8080',
     'infnote.com',
     'api.infnote.com',
     'io.infnote.com',
@@ -180,3 +177,5 @@ STATIC_URL = '/static/'
 # Blockchain Settings
 POST_CHAIN_ID = '1BWJrzQBjWJ1JTBRXYrWRAU9dYdJJ2GXDM'
 USER_CHAIN_ID = '1PdJ5CLZfqUKy39RBfSPcwGnXvbdFgBuEW'
+ANONYMOUS_ID = '1HwMRa7tyK5ikhK7YyX76mVCZb6NEYC7Ld'
+ANONYMOUS_KEY = 'Ky5DFuCVeiZ62gMcMMhedyHAo7VQDomX7JgMRp8xJ1HdtwqJJoq9'
