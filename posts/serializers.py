@@ -4,7 +4,7 @@ import hashlib
 
 from rest_framework import serializers
 
-from utils.serializers import TruncatedField
+from utils.serializers import TruncatedField, TruncatedHintField
 from users.serializers import UserField
 from utils.signature import recover_user_id
 
@@ -64,10 +64,11 @@ class PostSerializer(serializers.ModelSerializer):
 
 class PostBriefSerializer(PostSerializer):
     content = TruncatedField()
+    truncated = TruncatedHintField(source='content')
 
     class Meta(PostSerializer.Meta):
         exclude = None
-        fields = ('id', 'title', 'date_submitted', 'last_reply', 'user', 'replies', 'content')
+        fields = ('id', 'title', 'date_submitted', 'last_reply', 'user', 'replies', 'content', 'truncated')
 
 
 class PostImportSerializer(PostSerializer):

@@ -18,3 +18,10 @@ class TruncatedField(serializers.CharField):
         if len(value) > 200:
             return value[:200]
         return value
+
+
+class TruncatedHintField(serializers.CharField):
+    def to_representation(self, value):
+        if len(value) > 200:
+            return True
+        return False
