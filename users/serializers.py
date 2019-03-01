@@ -67,7 +67,7 @@ class UserField(serializers.RelatedField):
         except ObjectDoesNotExist:
             return {
                 'user_id': value,
-                'nickname': 'Anonymous',
+                'nickname': 'anonymous',
                 'avatar': None,
                 'bio': '',
             }
