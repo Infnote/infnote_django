@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [
     'infnote.com',
     'api.infnote.com',
     'io.infnote.com',
+    'pku.infnote.com'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = False
@@ -38,6 +39,7 @@ CORS_ORIGIN_WHITELIST = (
     'infnote.com',
     'api.infnote.com',
     'io.infnote.com',
+    'pku.infnote.com'
 )
 
 # Application definition
