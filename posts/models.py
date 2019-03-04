@@ -21,14 +21,18 @@ class PostManager(models.Manager):
         else:
             try:
                 topic = self.get(payload_id=post.reply_to)
+                topic.replies += 1
+                topic.last_reply = post.payload_id
+                topic.save()
             except ObjectDoesNotExist:
                 return self.get(id=post.id)
-            topic.replies += 1
-            topic.last_reply = post.payload_id
-            topic.save()
-            topic_owner = User.objects.get(user_id=topic.user_id)
-            topic_owner.replies += 1
-            topic_owner.save()
+
+            try:
+                topic_owner = User.objects.get(user_id=topic.user_id)
+                topic_owner.replies += 1
+                topic_owner.save()
+            except ObjectDoesNotExist:
+                pass
 
         return self.get(id=post.id)
 

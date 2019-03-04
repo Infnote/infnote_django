@@ -15,13 +15,13 @@ class TimestampField(serializers.DateTimeField):
 
 class TruncatedField(serializers.CharField):
     def to_representation(self, value):
-        if len(value) > 200:
-            return value[:200]
+        if len(value) > 500:
+            return value[:500]
         return value
 
 
 class TruncatedHintField(serializers.CharField):
     def to_representation(self, value):
-        if len(value) > 200:
+        if len(value) > 500:
             return True
         return False
